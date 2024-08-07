@@ -54,5 +54,6 @@ public:
 
 
 /*
-    Time Complexity: O(log N)
+    Time Complexity: O(Logn)
+    Space Complexity: O(Logn)
 */
