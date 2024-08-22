@@ -11,7 +11,7 @@
     Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 */
 
-// Solution: Brute
+// 1. Solution: Brute
 
 class Solution {
 public:
@@ -36,3 +36,26 @@ public:
     Time Complexity: O(2^n * n) // n = size of array
     Space Complexity: near about O(2^n * n)
 */
+
+// 2. Solution: Recursive
+
+class Solution {
+public:
+    void subsets(int ind, int N, vector<vector<int>> &ans, vector<int> &nums, vector<int> &ds) {
+        if(ind == N) {
+            ans.push_back(ds);
+            return ;
+        }
+        ds.push_back(nums[ind]);
+        subsets(ind + 1 , N, ans, nums, ds);
+
+        ds.pop_back();
+        subsets(ind + 1, N, ans, nums, ds);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> ds;
+        subsets(0, nums.size(), ans, nums, ds);
+        return ans;
+    }
+};
