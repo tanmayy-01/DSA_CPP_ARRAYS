@@ -44,3 +44,31 @@ public:
     Time Complexity: O(n! * n), n = size of array
     Space Complexity: O(n) + O(n)
 */
+
+// Solution: Without extra space
+
+class Solution {
+public:
+
+    void findPermutations(int ind, vector<int>& nums, vector<vector<int>>& ans) {
+        if(ind == nums.size()) {
+            ans.push_back(nums);
+            return;
+        }
+
+        for(int i = ind ; i < nums.size() ; i++) {
+            swap(nums[ind], nums[i]);
+            findPermutations(ind + 1, nums, ans);
+            swap(nums[ind], nums[i]);
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+        findPermutations(0, nums, ans);
+        return ans;
+    }
+};
+
+/*
+    Time Complexity: O(n! * n)
+ */
